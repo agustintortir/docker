@@ -6,6 +6,10 @@ on:
       - main
       - desarrollo
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   push_to_registry:
     
