@@ -8,9 +8,14 @@ on:
 
 jobs:
   push_to_registry:
+    
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Check out the repo
         uses: actions/checkout@v3
       
