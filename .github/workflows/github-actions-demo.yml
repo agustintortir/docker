@@ -1,6 +1,10 @@
 name: Publish Docker image
 
-on: [push]
+on: 
+  push: 
+    branches: 
+      - main
+      - desarrollo
 
 jobs:
   push_to_registry:
@@ -9,6 +13,13 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+      
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "/*******  HASH_ID *******/"
+          replace: "${{ github.sha }}"
+          regex: false
       
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
