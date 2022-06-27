@@ -20,6 +20,13 @@ jobs:
           find: "/*******  HASH_ID *******/"
           replace: "${{ github.sha }}"
           regex: false
+
+      - name: Find and Replace1
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "/*******  HASH_DATE *******/"
+          replace: "${{ github.event.repository.updated_at}}"
+          regex: false
       
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
