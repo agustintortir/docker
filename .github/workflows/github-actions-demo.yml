@@ -25,7 +25,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "/*******  HASH_DATE *******/"
-          replace: "${{ github.event.repository.updated_at}}"
+          replace: "${{ steps.date.outputs.date }}"
           regex: false
       
       - name: Log in to Docker Hub
